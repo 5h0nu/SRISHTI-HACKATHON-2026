@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Edu AI</string>
+    <string name="tagline">Sustainable Offline Learning</string>
+    <string name="hint_text">Explain the concept in your own words...</string>
+    <string name="btn_text">Analyze Understanding</string>
+    <string name="status_ready">Status: Ready</string>
+</resources>

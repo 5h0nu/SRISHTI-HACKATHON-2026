@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvDatasetName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dataset Title"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDatasetStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Not Downloaded"
+            android:textColor="#888888"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/tvDatasetPath"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Path: "
+            android:textColor="#666666"
+            android:textSize="12sp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:gravity="end">
+
+            <Button
+                android:id="@+id/btnDownloadDataset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Download"
+                app:backgroundTint="#00838F"
+                android:textColor="#FFFFFF"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnDeleteDataset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:layout_marginStart="8dp"
+                app:backgroundTint="#D32F2F"
+                android:textColor="#FFFFFF"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

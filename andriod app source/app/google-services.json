@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "372117573429",
+    "project_id": "klarity-6d0c7",
+    "storage_bucket": "klarity-6d0c7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372117573429:android:8e5b0603b10c747bdf067c",
+        "android_client_info": {
+          "package_name": "com.shadow.gapbridge"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVARbspDXm3MgyBF77v7kdWCGHuNnANyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

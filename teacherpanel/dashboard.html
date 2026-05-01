@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Panel - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <div id="toast" class="toast"></div>
+
+    <div class="layout-wrapper">
+        <aside class="sidebar glass-effect">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>EduPanel</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active" onclick="window.location.href='dashboard.html'"><i class="fa-solid fa-chart-pie"></i> Overview</li>
+                <li onclick="window.location.href='students.html'"><i class="fa-solid fa-users"></i> Students</li>
+                <li onclick="window.location.href='modules.html'"><i class="fa-solid fa-book"></i> Modules</li>
+                <li onclick="window.location.href='dataset.html'"><i class="fa-solid fa-database"></i> Datasets</li>
+                <li id="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="search-bar glass-effect">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="user-profile">
+                    <span id="user-email-display">Loading...</span>
+                    <div class="avatar"><i class="fa-solid fa-user-tie"></i></div>
+                </div>
+            </header>
+
+            <div class="page-header">
+                <h1>Dashboard Overview</h1>
+                <p>Welcome back! Here's what's happening today.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card glass-effect interactive animate-up" id="total-students-card" style="--delay: 0.1s">
+                    <div class="stat-icon info"><i class="fa-solid fa-users"></i></div>
+                    <div class="stat-details">
+                        <h3>Total Students</h3>
+                        <h2 id="total-students">0</h2>
+                        <span class="click-hint">Click to view list <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+                <div class="stat-card glass-effect interactive animate-up" id="doubts-cleared-card" style="--delay: 0.2s">
+                    <div class="stat-icon success"><i class="fa-solid fa-check-circle"></i></div>
+                    <div class="stat-details">
+                        <h3>Doubts Cleared</h3>
+                        <h2 id="doubts-cleared">0</h2>
+                        <span class="click-hint">Click to view list <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+                <div class="stat-card glass-effect interactive animate-up" id="doubts-asked-card" style="--delay: 0.3s">
+                    <div class="stat-icon warning"><i class="fa-solid fa-clipboard-question"></i></div>
+                    <div class="stat-details">
+                        <h3>Total Doubts Asked</h3>
+                        <h2 id="doubts-asked">0</h2>
+                        <span class="click-hint">Click to view list <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+                <div class="stat-card glass-effect interactive animate-up" id="total-evaluations-card" style="--delay: 0.4s">
+                    <div class="stat-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent);"><i class="fa-solid fa-star"></i></div>
+                    <div class="stat-details">
+                        <h3>Evaluations</h3>
+                        <h2 id="total-evaluations">0</h2>
+                        <span class="click-hint">Click to view list <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-charts grid-2-col animate-up" style="--delay: 0.4s">
+                <div class="chart-container glass-effect">
+                    <h3>Platform Overview</h3>
+                    <div style="height: 300px; position: relative;">
+                        <canvas id="analyticsChart"></canvas>
+                    </div>
+                </div>
+                <div class="recent-doubts-container glass-effect">
+                    <div class="header-with-action">
+                        <h3>Recent Doubts</h3>
+                        <button class="btn-text-only" id="view-all-doubts-btn">View All</button>
+                    </div>
+                    <ul class="recent-doubts-list" id="recent-doubts-list">
+                        <div class="loading-pulse">Loading data...</div>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL FOR ALL DOUBTS -->
+    <div id="doubts-modal" class="modal-overlay">
+        <div class="modal-content glass-effect">
+            <div class="modal-header">
+                <h2>Asked Doubts</h2>
+                <button class="close-btn" id="close-doubts-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="pending">Pending</button>
+                    <button class="filter-btn" data-filter="cleared">Cleared</button>
+                </div>
+                <div class="doubts-full-list" id="doubts-full-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FOR USERS -->
+    <div id="users-modal" class="modal-overlay">
+        <div class="modal-content glass-effect">
+            <div class="modal-header">
+                <h2>All Registered Students</h2>
+                <button class="close-btn" id="close-users-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="doubts-full-list" id="users-full-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FOR EVALUATIONS -->
+    <div id="evaluations-modal" class="modal-overlay">
+        <div class="modal-content glass-effect">
+            <div class="modal-header">
+                <h2>All Evaluations</h2>
+                <button class="close-btn" id="close-evaluations-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="filters" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <div style="font-weight: 500;">Student Evaluations</div>
+                    <select id="evaluations-sort" class="glass-effect" style="padding: 8px 12px; border-radius: 8px; background: rgba(255,255,255,0.05); color: var(--text); border: 1px solid rgba(255,255,255,0.2); outline: none; cursor: pointer;">
+                        <option value="newest" style="background: var(--bg-color);">Date: Newest First</option>
+                        <option value="high" style="background: var(--bg-color);">Level: High to Low</option>
+                        <option value="low" style="background: var(--bg-color);">Level: Low to High</option>
+                    </select>
+                </div>
+                <div class="doubts-full-list" id="evaluations-full-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="dashboard.js"></script>
+</body>
+</html>

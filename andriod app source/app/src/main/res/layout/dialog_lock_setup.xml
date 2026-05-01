@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog_rounded"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set Parent Lock"
+        android:textColor="#1A1A1A"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lock the app to prevent escaping. Enter an email for alerts and a PIN to unlock."
+        android:textColor="#666666"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_marginBottom="24dp"/>
+
+    <EditText
+        android:id="@+id/etParentEmail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_input_box"
+        android:hint="Parent Email for Alerts"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#888888"
+        android:paddingHorizontal="16dp"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/etPin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_input_box"
+        android:hint="Set 4-digit PIN"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#888888"
+        android:paddingHorizontal="16dp"
+        android:inputType="numberPassword"
+        android:maxLength="4"
+        android:layout_marginBottom="24dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCancelLock"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#E0E0E0"
+            android:textColor="#1A1A1A"
+            android:text="Cancel"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btnConfirmLock"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#005D67"
+            android:textColor="#FFFFFF"
+            android:text="Lock App"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#FFFFFF">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="100dp">
+        <TextView
+            android:id="@+id/tvLoadText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Load   ng"
+            android:textSize="48sp"
+            android:textColor="#1A1A1A"
+            android:letterSpacing="0.1"
+            android:fontFamily="sans-serif-black"
+            android:layout_centerInParent="true" />
+        <View
+            android:id="@+id/redDot"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:background="@drawable/loading_dot"
+            android:layout_alignTop="@id/tvLoadText"
+            android:layout_alignEnd="@id/tvLoadText"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="54dp" />
+    </RelativeLayout>
+</LinearLayout>
