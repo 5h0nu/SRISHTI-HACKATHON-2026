@@ -89,14 +89,14 @@ To connect the Teacher Dashboard to your own Firebase project:
    ```
 
 ## 👥 Contributors
-- **[Member 1 Name]** 
-- **[Member 2 Name]** 
-- **[Member 3 Name]** 
-- **[Member 4 Name]** 
+- **Mohammed Khasim G S** 
+- **Huzaifa** 
+- **Mehek Saba** 
+- **Nuthana D R** 
 
 ## 📞 Contact
 For any inquiries or feedback, please reach out to us at:
-**[Insert Contact Email Here]**
+**mdkhasimgs@gmail.com**
 
 ---
 *Built with ❤️ for SRISHTI HACKATHON 2026.*
