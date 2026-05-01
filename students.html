@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Panel - Students</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <div id="toast" class="toast"></div>
+
+    <div class="layout-wrapper">
+        <aside class="sidebar glass-effect">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>EduPanel</h2>
+            </div>
+            <ul class="nav-links">
+                <li onclick="window.location.href='dashboard.html'"><i class="fa-solid fa-chart-pie"></i> Overview</li>
+                <li class="active" onclick="window.location.href='students.html'"><i class="fa-solid fa-users"></i> Students</li>
+                <li onclick="window.location.href='modules.html'"><i class="fa-solid fa-book"></i> Modules</li>
+                <li onclick="window.location.href='dataset.html'"><i class="fa-solid fa-database"></i> Datasets</li>
+                <li id="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="search-bar glass-effect">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="Search students...">
+                </div>
+                <div class="user-profile">
+                    <span id="user-email-display">Loading...</span>
+                    <div class="avatar"><i class="fa-solid fa-user-tie"></i></div>
+                </div>
+            </header>
+
+            <div class="page-header">
+                <h1>Student Roster</h1>
+                <p>Manage and monitor student progress.</p>
+            </div>
+
+            <div class="table-container glass-effect animate-up">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Student Email</th>
+                            <th>Doubts Asked</th>
+                            <th>Doubts Cleared</th>
+                            <th>Evaluations</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="students-table-body">
+                        <tr><td colspan="4" class="text-center loading-pulse">Loading student data...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL FOR STUDENT ANALYTICS -->
+    <div id="student-analytics-modal" class="modal-overlay">
+        <div class="modal-content glass-effect" style="max-width: 900px;">
+            <div class="modal-header">
+                <h2>Student Analytics: <span id="analytics-student-email" style="color: var(--primary);"></span></h2>
+                <button class="close-btn" id="close-analytics-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div class="stats-grid" style="margin-bottom: 30px; grid-template-columns: repeat(3, 1fr);">
+                    <div class="stat-card glass-effect" style="padding: 15px;">
+                        <h3 style="font-size: 13px; color: var(--text-muted);">Total Doubts</h3>
+                        <h2 id="modal-total-doubts" style="font-size: 24px;">0</h2>
+                    </div>
+                    <div class="stat-card glass-effect" style="padding: 15px;">
+                        <h3 style="font-size: 13px; color: var(--text-muted);">Cleared</h3>
+                        <h2 id="modal-cleared-doubts" style="font-size: 24px; color: var(--success);">0</h2>
+                    </div>
+                    <div class="stat-card glass-effect" style="padding: 15px;">
+                        <h3 style="font-size: 13px; color: var(--text-muted);">Pending</h3>
+                        <h2 id="modal-pending-doubts" style="font-size: 24px; color: var(--warning);">0</h2>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1.5fr 1.5fr; gap: 20px;">
+                    <div class="chart-container glass-effect" style="padding: 20px;">
+                        <h3>Resolution Rate</h3>
+                        <div style="height: 250px;">
+                            <canvas id="studentAnalyticsChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="recent-doubts-container glass-effect" style="padding: 20px; max-height: 320px; overflow-y: auto;">
+                        <h3 style="margin-bottom: 15px;">Student's Log</h3>
+                        <div id="modal-student-logs">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                    <div class="recent-evaluations-container glass-effect" style="padding: 20px; max-height: 320px; overflow-y: auto;">
+                        <h3 style="margin-bottom: 15px;">Evaluations</h3>
+                        <div id="modal-student-evaluations">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="students.js"></script>
+</body>
+</html>

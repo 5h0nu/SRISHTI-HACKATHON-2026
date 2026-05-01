@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Panel - Modules</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .upload-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 15px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="url"],
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            outline: none;
+        }
+        .form-group input[type="file"]::file-selector-button {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+        .btn-upload {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .btn-upload:hover {
+            background: var(--primary-dark, #5b21b6);
+        }
+        .btn-upload:disabled {
+            background: #555;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="dashboard-body">
+    <div id="toast" class="toast"></div>
+
+    <div class="layout-wrapper">
+        <aside class="sidebar glass-effect">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>EduPanel</h2>
+            </div>
+            <ul class="nav-links">
+                <li onclick="window.location.href='dashboard.html'"><i class="fa-solid fa-chart-pie"></i> Overview</li>
+                <li onclick="window.location.href='students.html'"><i class="fa-solid fa-users"></i> Students</li>
+                <li class="active" onclick="window.location.href='modules.html'"><i class="fa-solid fa-book"></i> Modules</li>
+                <li onclick="window.location.href='dataset.html'"><i class="fa-solid fa-database"></i> Datasets</li>
+                <li id="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="search-bar glass-effect" style="opacity: 0;">
+                    <!-- Hidden search bar to keep alignment -->
+                </div>
+                <div class="user-profile">
+                    <span id="user-email-display">Loading...</span>
+                    <div class="avatar"><i class="fa-solid fa-user-tie"></i></div>
+                </div>
+            </header>
+
+            <div class="page-header">
+                <h1>Add New Module</h1>
+                <p>Upload study materials and resources for your students.</p>
+            </div>
+
+            <div class="upload-form-container glass-effect animate-up">
+                <form id="upload-form">
+                    <div class="form-group">
+                        <label for="module-title">Module Title</label>
+                        <input type="text" id="module-title" placeholder="e.g., Chapter 1: Introduction to Physics" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="module-url">PDF Link</label>
+                        <input type="url" id="module-url" placeholder="https://example.com/file.pdf" required>
+                    </div>
+                    <button type="submit" class="btn-upload" id="upload-btn">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Save Module
+                    </button>
+                </form>
+            </div>
+            
+            <div class="page-header" style="margin-top: 40px;">
+                <h2>Uploaded Modules</h2>
+            </div>
+            <div class="table-container glass-effect animate-up" style="--delay: 0.2s;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Upload Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modules-table-body">
+                        <tr><td colspan="3" class="text-center loading-pulse">Loading modules...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+    </div>
+
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="modules.js"></script>
+</body>
+</html>
