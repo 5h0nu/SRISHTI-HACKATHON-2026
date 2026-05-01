@@ -14,7 +14,7 @@ Our repository is organized into three main directories:
 
 ### Teacher Panel (Live Web App)
 You can access the live, hosted version of the Teacher Panel here:
-**[Teacher Dashboard Link](https://5h0nu.github.io/SRISHTI-HACKATHON-2026/)**
+**[Teacher Dashboard Link](https://5h0nu.github.io/SRISHTI-HACKATHON-2026/index.html)**
 
 **Test Credentials:**
 - **Email:** `teacher@gmail.com`
