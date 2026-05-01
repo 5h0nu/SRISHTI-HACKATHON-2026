@@ -60,6 +60,34 @@ The Teacher Panel is already hosted, but if you wish to run it locally:
 1. Navigate to the `teacherpanel` directory.
 2. If it's a Node project, install dependencies (`npm install`) and start the server (`npm run dev`). Otherwise, simply open `index.html` in your browser.
 
+## 🔐 Configuration (API Keys & Firebase)
+
+### 1. Changing the API Keys (Android App)
+To enable the AI capabilities in the mobile app, you must provide your own API keys:
+1. Open `andriod app source/app/src/main/java/com/shadow/gapbridge/MainActivity.kt`.
+2. Locate the following lines (around line 55):
+   ```kotlin
+   private val GROQ_API_KEY = "YOUR_GROQ_API_KEY"
+   private val STABILITY_API_KEY = "YOUR_STABILITY_API_KEY"
+   ```
+3. Replace `"YOUR_GROQ_API_KEY"` with your Groq API key and `"YOUR_STABILITY_API_KEY"` with your Stability AI API key.
+
+### 2. Changing Firestore Details (Teacher Panel)
+To connect the Teacher Dashboard to your own Firebase project:
+1. Open the `teacherpanel/firebase-config.js` file.
+2. Locate the `firebaseConfig` object at the top of the file.
+3. Replace the placeholder credentials with your Firebase project's configuration details:
+   ```javascript
+   const firebaseConfig = {
+     apiKey: "YOUR_API_KEY",
+     authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+     projectId: "YOUR_PROJECT_ID",
+     storageBucket: "YOUR_PROJECT_ID.appspot.com",
+     messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+     appId: "YOUR_APP_ID"
+   };
+   ```
+
 ## 👥 Contributors
 - **[Member 1 Name]** 
 - **[Member 2 Name]** 
